@@ -15,7 +15,7 @@ public class School {
     @OneToOne
     private Address address;
     @OneToMany (mappedBy ="school" )
-   private List<SchoolClass> schoolClass=new ArrayList<>();
+   private List<SchoolClass> schoolClass;
 
     public School() {
     }
