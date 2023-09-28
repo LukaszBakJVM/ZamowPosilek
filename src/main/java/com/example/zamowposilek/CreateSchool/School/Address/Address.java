@@ -1,4 +1,4 @@
-package com.example.zamowposilek.School;
+package com.example.zamowposilek.CreateSchool.School.Address;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -62,11 +62,11 @@ public class Address {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return id == address.id && Objects.equals(city, address.city) && Objects.equals(zipCode, address.zipCode) && Objects.equals(street, address.street) && Objects.equals(houseNumber, address.houseNumber);
+        return Objects.equals(city, address.city) && Objects.equals(zipCode, address.zipCode) && Objects.equals(street, address.street) && Objects.equals(houseNumber, address.houseNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, city, zipCode, street, houseNumber);
+        return Objects.hash(city, zipCode, street, houseNumber);
     }
 }

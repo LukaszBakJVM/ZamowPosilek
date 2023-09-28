@@ -1,4 +1,4 @@
-package com.example.zamowposilek.School;
+package com.example.zamowposilek.CreateSchool.School;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

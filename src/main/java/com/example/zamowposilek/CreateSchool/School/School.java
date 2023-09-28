@@ -1,5 +1,7 @@
-package com.example.zamowposilek.School;
+package com.example.zamowposilek.CreateSchool.School;
 
+import com.example.zamowposilek.CreateSchool.School.Address.Address;
+import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClass;
 import jakarta.persistence.*;
 
 
@@ -57,11 +59,11 @@ public class School {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         School school = (School) o;
-        return id == school.id && Objects.equals(name, school.name) && Objects.equals(address, school.address) && Objects.equals(schoolClass, school.schoolClass);
+        return Objects.equals(name, school.name) && Objects.equals(address, school.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, address, schoolClass);
+        return Objects.hash(name, address);
     }
 }

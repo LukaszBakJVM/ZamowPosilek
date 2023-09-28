@@ -1,4 +1,4 @@
-package com.example.zamowposilek.School;
+package com.example.zamowposilek.CreateSchool.School;
 
 public class SchoolDto {
     private long schoolId;

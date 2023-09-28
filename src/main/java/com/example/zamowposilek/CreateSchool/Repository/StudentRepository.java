@@ -1,6 +1,6 @@
-package com.example.zamowposilek.School.Repository;
+package com.example.zamowposilek.CreateSchool.Repository;
 
-import com.example.zamowposilek.School.Student;
+import com.example.zamowposilek.CreateSchool.CreateClass.Student;
 import org.springframework.data.repository.CrudRepository;
 
 public interface StudentRepository extends CrudRepository<Student,Integer> {

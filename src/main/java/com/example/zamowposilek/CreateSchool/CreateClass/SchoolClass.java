@@ -1,5 +1,6 @@
-package com.example.zamowposilek.School;
+package com.example.zamowposilek.CreateSchool.CreateClass;
 
+import com.example.zamowposilek.CreateSchool.School.School;
 import jakarta.persistence.*;
 
 import java.util.List;

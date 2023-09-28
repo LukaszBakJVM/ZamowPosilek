@@ -1,4 +1,4 @@
-package com.example.zamowposilek.School;
+package com.example.zamowposilek.CreateSchool.CreateClass;
 
 import jakarta.persistence.*;
 

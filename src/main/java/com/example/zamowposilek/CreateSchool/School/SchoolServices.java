@@ -1,10 +1,14 @@
-package com.example.zamowposilek.School;
+package com.example.zamowposilek.CreateSchool.School;
 
-import com.example.zamowposilek.School.Mapper.SchoolMapper;
-import com.example.zamowposilek.School.Repository.AddressRepository;
-import com.example.zamowposilek.School.Repository.SchoolRepository;
+import com.example.zamowposilek.CreateSchool.Repository.AddressRepository;
+import com.example.zamowposilek.CreateSchool.Repository.SchoolRepository;
+import com.example.zamowposilek.SchoolException.SchoolDuplicateException;
 import com.example.zamowposilek.SchoolException.SchoolNotfoundException;
 import org.springframework.stereotype.Service;
+
+
+import java.util.Set;
+
 
 @Service
 public class SchoolServices {
@@ -17,9 +21,13 @@ public class SchoolServices {
         this.schoolMapper = schoolMapper;
         this.addressRepository = addressRepository;
     }
-    public SchoolDto save(SchoolDto dto){
-        School map = schoolMapper.map(dto);
-        addressRepository.save(map.getAddress());
+     SchoolDto save(SchoolDto dto) {
+         School map = schoolMapper.map(dto);
+         Set<School> all = schoolRepository.findAll();
+         if (all.contains(map)) {
+         throw new SchoolDuplicateException();
+     }
+         addressRepository.save(map.getAddress());
         School save = schoolRepository.save(map);
         return schoolMapper.map(save);
     }

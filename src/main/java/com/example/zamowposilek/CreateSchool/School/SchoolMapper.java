@@ -1,13 +1,12 @@
-package com.example.zamowposilek.School.Mapper;
+package com.example.zamowposilek.CreateSchool.School;
 
-import com.example.zamowposilek.School.Address;
-import com.example.zamowposilek.School.School;
-import com.example.zamowposilek.School.SchoolDto;
+import com.example.zamowposilek.CreateSchool.School.Address.Address;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class SchoolMapper {
- public School map(SchoolDto dto){
+ protected School map(SchoolDto dto){
     School school =new School();
     Address address =new Address();
     school.setId(dto.getSchoolId());
@@ -20,7 +19,7 @@ public class SchoolMapper {
     school.setAddress(address);
     return school;
 }
-public SchoolDto map(School school){
+protected SchoolDto map(School school){
     SchoolDto dto =new SchoolDto();
     dto.setSchoolId(school.getId());
     dto.setSchoolName(school.getName());
