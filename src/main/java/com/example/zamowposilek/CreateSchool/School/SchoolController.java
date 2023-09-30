@@ -25,4 +25,9 @@ public class SchoolController {
                 .path("/{id}").buildAndExpand(save.getSchoolId()).toUri();
         return ResponseEntity.created(uri).body(save);
     }
+    @DeleteMapping("/{id}")
+    ResponseEntity<?>deleteById(@PathVariable long id){
+        schoolServices.delete(id);
+        return  ResponseEntity.noContent().build();
+    }
 }

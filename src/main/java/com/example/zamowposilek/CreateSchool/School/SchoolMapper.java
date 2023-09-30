@@ -17,6 +17,7 @@ public class SchoolMapper {
     address.setStreet(dto.getStreet());
     address.setHouseNumber(dto.getHouseNumber());
     school.setAddress(address);
+
     return school;
 }
 protected SchoolDto map(School school){

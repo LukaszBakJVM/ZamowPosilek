@@ -5,6 +5,7 @@ import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClass;
 import jakarta.persistence.*;
 
 
+
 import java.util.List;
 import java.util.Objects;
 
@@ -14,9 +15,10 @@ public class School {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    @OneToOne
-    private Address address;
-    @OneToMany (mappedBy ="school" )
+    @OneToOne(mappedBy = "school")
+
+   private Address address;
+    @OneToMany
    private List<SchoolClass> schoolClass;
 
     public School() {

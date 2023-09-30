@@ -1,9 +1,8 @@
 package com.example.zamowposilek.CreateSchool.School.Address;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+import com.example.zamowposilek.CreateSchool.School.School;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -16,6 +15,9 @@ public class Address {
     private String zipCode;
     private String street;
     private String houseNumber;
+    @OneToOne
+
+    private School school;
 
     public long getId() {
         return id;
@@ -55,6 +57,14 @@ public class Address {
 
     public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
 
     @Override
