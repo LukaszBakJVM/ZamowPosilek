@@ -1,7 +1,7 @@
 package com.example.zamowposilek.CreateSchool.CreateClass;
 
 import com.example.zamowposilek.CreateSchool.Repository.SchoolClassRepository;
-import com.example.zamowposilek.CreateSchool.Repository.SchoolRepository;
+
 import org.springframework.stereotype.Service;
 
 
@@ -10,13 +10,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class SchoolClassServices {
-    private final SchoolRepository schoolRepository;
+
     private final SchoolClassRepository schoolClassRepository;
     private final SchoolClassMapper schoolClassMapper;
 
-    public SchoolClassServices(SchoolRepository schoolRepository, SchoolClassRepository schoolClassRepository
-            , SchoolClassMapper schoolClassMapper) {
-        this.schoolRepository = schoolRepository;
+    public SchoolClassServices(SchoolClassRepository schoolClassRepository, SchoolClassMapper schoolClassMapper) {
         this.schoolClassRepository = schoolClassRepository;
         this.schoolClassMapper = schoolClassMapper;
     }
