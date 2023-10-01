@@ -12,6 +12,7 @@ public class SchoolClass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true)
     private String className;
     @ManyToOne
     private School school;

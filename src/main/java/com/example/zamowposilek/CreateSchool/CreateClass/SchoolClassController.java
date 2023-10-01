@@ -26,10 +26,11 @@ public class SchoolClassController {
         return ResponseEntity.created(uri).body(save);
     }
     @GetMapping("")
-    ResponseEntity<Set<SchoolClassDto>>findByName(@RequestParam(required = false)String name){
-        if (name!=null){
+    ResponseEntity<Set<SchoolClassDto>>findByName(@RequestParam(required = false)String name) {
+        if (name != null) {
             return ResponseEntity.ok(schoolClassServices.findClassByName(name));
+        } else {
+            return ResponseEntity.ok(schoolClassServices.findAll());
         }
-        return ResponseEntity.ok(schoolClassServices.findAll());
     }
 }
