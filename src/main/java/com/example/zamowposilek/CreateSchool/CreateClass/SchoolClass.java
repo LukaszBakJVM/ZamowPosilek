@@ -1,5 +1,6 @@
 package com.example.zamowposilek.CreateSchool.CreateClass;
 
+import com.example.zamowposilek.CreateSchool.CreateClass.Student.Student;
 import com.example.zamowposilek.CreateSchool.School.School;
 import jakarta.persistence.*;
 
