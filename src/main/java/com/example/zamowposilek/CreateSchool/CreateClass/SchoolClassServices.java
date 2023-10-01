@@ -34,4 +34,7 @@ public class SchoolClassServices {
               .stream().map(schoolClassMapper::map)
               .collect(Collectors.toSet());
     }
+    void deleteClass(int id){
+        schoolClassRepository.deleteById(id);
+    }
 }

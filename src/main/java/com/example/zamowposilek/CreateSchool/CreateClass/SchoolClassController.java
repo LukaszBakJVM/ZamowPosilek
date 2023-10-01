@@ -33,4 +33,11 @@ public class SchoolClassController {
             return ResponseEntity.ok(schoolClassServices.findAll());
         }
     }
+        @DeleteMapping("/{id}")
+                ResponseEntity<?>deleteClass(@PathVariable int id){
+            schoolClassServices.deleteClass(id);
+            return ResponseEntity.noContent().build();
+
+
+    }
 }

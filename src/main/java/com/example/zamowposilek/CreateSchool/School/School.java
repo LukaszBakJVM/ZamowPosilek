@@ -18,8 +18,8 @@ public class School {
     @OneToOne(mappedBy = "school")
 
    private Address address;
-    @OneToMany
-   private List<SchoolClass> schoolClass;
+    @OneToMany(mappedBy = "school")
+    private List<SchoolClass> schoolClass;
 
     public School() {
     }

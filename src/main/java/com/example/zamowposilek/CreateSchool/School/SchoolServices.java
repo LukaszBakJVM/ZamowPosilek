@@ -1,6 +1,8 @@
 package com.example.zamowposilek.CreateSchool.School;
 
+
 import com.example.zamowposilek.CreateSchool.Repository.AddressRepository;
+import com.example.zamowposilek.CreateSchool.Repository.SchoolClassRepository;
 import com.example.zamowposilek.CreateSchool.Repository.SchoolRepository;
 import com.example.zamowposilek.CreateSchool.School.Address.Address;
 import com.example.zamowposilek.SchoolException.SchoolDuplicateException;
@@ -17,11 +19,14 @@ public class SchoolServices {
     private final SchoolRepository schoolRepository;
     private final SchoolMapper schoolMapper;
     private final AddressRepository addressRepository;
+    private final SchoolClassRepository schoolClassRepository;
 
-    public SchoolServices(SchoolRepository schoolRepository, SchoolMapper schoolMapper, AddressRepository addressRepository) {
+    public SchoolServices(SchoolRepository schoolRepository, SchoolMapper schoolMapper,
+                          AddressRepository addressRepository, SchoolClassRepository schoolClassRepository) {
         this.schoolRepository = schoolRepository;
         this.schoolMapper = schoolMapper;
         this.addressRepository = addressRepository;
+        this.schoolClassRepository = schoolClassRepository;
     }
 
     SchoolDto save(SchoolDto dto) {
@@ -45,6 +50,7 @@ public class SchoolServices {
 
     void delete(long id) {
         School school = schoolRepository.findById(id).orElseThrow();
+        schoolClassRepository.deleteAll(school.getSchoolClass());
         addressRepository.delete(school.getAddress());
         schoolRepository.delete(school);
     }
