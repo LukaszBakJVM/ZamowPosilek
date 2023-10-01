@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/school")
@@ -29,5 +30,9 @@ public class SchoolController {
     ResponseEntity<?>deleteById(@PathVariable long id){
         schoolServices.delete(id);
         return  ResponseEntity.noContent().build();
+    }
+    @GetMapping("/names")
+    List<String>schoolName(){
+        return schoolServices.findAllSchool();
     }
 }

@@ -8,7 +8,7 @@ import com.example.zamowposilek.SchoolException.SchoolNotfoundException;
 import org.springframework.stereotype.Service;
 
 
-
+import java.util.List;
 import java.util.Set;
 
 
@@ -23,30 +23,39 @@ public class SchoolServices {
         this.schoolMapper = schoolMapper;
         this.addressRepository = addressRepository;
     }
-     SchoolDto save(SchoolDto dto) {
-         School map = schoolMapper.map(dto);
-         Set<School> all = schoolRepository.findAll();
-         if (all.contains(map)) {
-         throw new SchoolDuplicateException();
-     }
-         Address address = addressRepository.save(map.getAddress());
-         address.setSchool(map);
-         School save = schoolRepository.save(map);
+
+    SchoolDto save(SchoolDto dto) {
+        School map = schoolMapper.map(dto);
+        Set<School> all = schoolRepository.findAll();
+        if (all.contains(map)) {
+            throw new SchoolDuplicateException();
+        }
+        Address address = addressRepository.save(map.getAddress());
+        address.setSchool(map);
+        School save = schoolRepository.save(map);
 
 
         return schoolMapper.map(save);
     }
-    SchoolDto findSchoolById(long id){
+
+    SchoolDto findSchoolById(long id) {
         School school = schoolRepository.findById(id).orElseThrow(SchoolNotfoundException::new);
         return schoolMapper.map(school);
     }
 
-    void delete(long id){
-    School school = schoolRepository.findById(id).orElseThrow();
+    void delete(long id) {
+        School school = schoolRepository.findById(id).orElseThrow();
         addressRepository.delete(school.getAddress());
-    schoolRepository.delete(school);
+        schoolRepository.delete(school);
+    }
 
+    List<String> findAllSchool() {
+      return   schoolRepository.findAll()
+                .stream()
+                .map(School::getName)
+                .toList();
 
 
     }
+
 }

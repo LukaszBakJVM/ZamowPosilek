@@ -1,26 +1,30 @@
-package com.example.zamowposilek.CreateSchool.CreateClass.Student;
+package com.example.zamowposilek.CreateSchool.CreateClass;
 
-import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClass;
-import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClassDto;
+
 import com.example.zamowposilek.CreateSchool.Repository.SchoolRepository;
 import com.example.zamowposilek.CreateSchool.School.School;
 
-import com.example.zamowposilek.SchoolException.SchoolNotfoundException;
+
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class SchoolClassMapper {
+    private final SchoolRepository schoolRepository;
     public SchoolClassMapper(SchoolRepository schoolRepository) {
         this.schoolRepository = schoolRepository;
     }
 
-    private final SchoolRepository schoolRepository;
+
     SchoolClass map(SchoolClassDto dto){
         SchoolClass schoolClass =new SchoolClass();
         schoolClass.setId(dto.getClassId());
         schoolClass.setClassName(dto.getClassName());
-        School school = schoolRepository.findById(dto.getSchoolId()).orElseThrow(SchoolNotfoundException::new);
-        schoolClass.setSchool(school);
+
+        Optional<School> byName = schoolRepository.findByName(dto.getSchoolName());
+        byName.ifPresent(schoolClass::setSchool);
+
         return schoolClass;
     }
     SchoolClassDto map(SchoolClass schoolClass){

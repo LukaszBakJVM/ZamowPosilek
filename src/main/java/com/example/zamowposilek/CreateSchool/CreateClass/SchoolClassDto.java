@@ -6,6 +6,7 @@ public class SchoolClassDto {
     private int classId;
     private String className;
     private long schoolId;
+    private String schoolName;
 
     public int getClassId() {
         return classId;
@@ -29,5 +30,13 @@ public class SchoolClassDto {
 
     public void setSchoolId(long schoolId) {
         this.schoolId = schoolId;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
     }
 }
