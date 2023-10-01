@@ -31,7 +31,7 @@ public class SchoolClassMapper {
         SchoolClassDto dto=new SchoolClassDto();
         dto.setClassId(schoolClass.getId());
         dto.setClassName(schoolClass.getClassName());
-        dto.setSchoolId(schoolClass.getSchool().getId());
+        dto.setSchoolName(schoolClass.getSchool().getName());
         return dto;
     }
 }
