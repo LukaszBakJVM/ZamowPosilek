@@ -19,6 +19,7 @@ public class School {
 
    private Address address;
     @OneToMany(mappedBy = "school")
+
     private List<SchoolClass> schoolClass;
 
     public School() {

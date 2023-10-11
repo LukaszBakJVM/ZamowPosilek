@@ -1,10 +1,10 @@
 package com.example.zamowposilek.CreateSchool.CreateClass;
 
-import com.example.zamowposilek.CreateSchool.Repository.SchoolClassRepository;
-
+import com.example.zamowposilek.SchoolException.ClassDuplicateException;
 import org.springframework.stereotype.Service;
 
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,6 +19,11 @@ public class SchoolClassServices {
         this.schoolClassMapper = schoolClassMapper;
     }
     SchoolClassDto save(SchoolClassDto dto){
+        Optional<SchoolClass> byClassName = schoolClassRepository
+                .findByClassNameAndSchoolName(dto.getClassName(), dto.getSchoolName());
+        byClassName.ifPresent(p->{throw new ClassDuplicateException();
+        });
+
         SchoolClass map = schoolClassMapper.map(dto);
         SchoolClass save = schoolClassRepository.save(map);
         return schoolClassMapper.map(save);

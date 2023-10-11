@@ -1,9 +1,8 @@
 package com.example.zamowposilek.CreateSchool.School;
 
 
-import com.example.zamowposilek.CreateSchool.Repository.AddressRepository;
-import com.example.zamowposilek.CreateSchool.Repository.SchoolClassRepository;
-import com.example.zamowposilek.CreateSchool.Repository.SchoolRepository;
+import com.example.zamowposilek.CreateSchool.School.Address.AddressRepository;
+import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClassRepository;
 import com.example.zamowposilek.CreateSchool.School.Address.Address;
 import com.example.zamowposilek.SchoolException.SchoolDuplicateException;
 import com.example.zamowposilek.SchoolException.SchoolNotfoundException;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -53,6 +53,12 @@ public class SchoolServices {
         schoolClassRepository.deleteAll(school.getSchoolClass());
         addressRepository.delete(school.getAddress());
         schoolRepository.delete(school);
+    }
+    Set<SchoolDto>findAll(){
+        return schoolRepository.findAll()
+                .stream()
+                .map(schoolMapper::map)
+                .collect(Collectors.toSet());
     }
 
     List<String> findAllSchool() {

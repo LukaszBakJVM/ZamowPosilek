@@ -1,13 +1,14 @@
 package com.example.zamowposilek.CreateSchool.CreateClass;
 
 
-import com.example.zamowposilek.CreateSchool.Repository.SchoolRepository;
+import com.example.zamowposilek.CreateSchool.School.SchoolRepository;
 import com.example.zamowposilek.CreateSchool.School.School;
 
 
+import com.example.zamowposilek.SchoolException.SchoolNotfoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+
 
 @Service
 public class SchoolClassMapper {
@@ -22,8 +23,8 @@ public class SchoolClassMapper {
         schoolClass.setId(dto.getClassId());
         schoolClass.setClassName(dto.getClassName());
 
-        Optional<School> byName = schoolRepository.findByName(dto.getSchoolName());
-        byName.ifPresent(schoolClass::setSchool);
+        School school = schoolRepository.findByName(dto.getSchoolName()).orElseThrow(SchoolNotfoundException::new);
+        schoolClass.setSchool(school);
 
         return schoolClass;
     }

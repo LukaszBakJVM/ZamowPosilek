@@ -6,6 +6,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/school")
@@ -34,5 +35,9 @@ public class SchoolController {
     @GetMapping("/names")
     List<String>schoolName(){
         return schoolServices.findAllSchool();
+    }
+    @GetMapping
+    ResponseEntity<Set<SchoolDto>>findAll(){
+        return ResponseEntity.ok(schoolServices.findAll());
     }
 }
