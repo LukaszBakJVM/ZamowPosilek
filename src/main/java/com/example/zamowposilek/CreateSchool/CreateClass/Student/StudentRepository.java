@@ -9,6 +9,9 @@ import java.util.List;
 
 public interface StudentRepository extends CrudRepository<Student,Integer> {
     List<Student>findAllBySchoolClassClassName(String name);
+
+
+
     @Query("SELECT s FROM Student s " +
             "JOIN s.schoolClass sc " +
             "JOIN sc.school sch " +

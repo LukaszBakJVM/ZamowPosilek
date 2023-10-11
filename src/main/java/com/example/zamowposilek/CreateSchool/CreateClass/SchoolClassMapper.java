@@ -22,7 +22,6 @@ public class SchoolClassMapper {
         SchoolClass schoolClass =new SchoolClass();
         schoolClass.setId(dto.getClassId());
         schoolClass.setClassName(dto.getClassName());
-
         School school = schoolRepository.findByName(dto.getSchoolName()).orElseThrow(SchoolNotfoundException::new);
         schoolClass.setSchool(school);
 

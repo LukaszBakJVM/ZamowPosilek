@@ -1,6 +1,8 @@
 package com.example.zamowposilek.CreateSchool.School;
 
 
+import com.example.zamowposilek.CreateSchool.CreateClass.Student.Student;
+import com.example.zamowposilek.CreateSchool.CreateClass.Student.StudentRepository;
 import com.example.zamowposilek.CreateSchool.School.Address.AddressRepository;
 import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClassRepository;
 import com.example.zamowposilek.CreateSchool.School.Address.Address;
@@ -20,13 +22,16 @@ public class SchoolServices {
     private final SchoolMapper schoolMapper;
     private final AddressRepository addressRepository;
     private final SchoolClassRepository schoolClassRepository;
+    private final StudentRepository studentRepository;
 
     public SchoolServices(SchoolRepository schoolRepository, SchoolMapper schoolMapper,
-                          AddressRepository addressRepository, SchoolClassRepository schoolClassRepository) {
+                          AddressRepository addressRepository, SchoolClassRepository schoolClassRepository,
+                          StudentRepository studentRepository) {
         this.schoolRepository = schoolRepository;
         this.schoolMapper = schoolMapper;
         this.addressRepository = addressRepository;
         this.schoolClassRepository = schoolClassRepository;
+        this.studentRepository = studentRepository;
     }
 
     SchoolDto save(SchoolDto dto) {
@@ -50,6 +55,11 @@ public class SchoolServices {
 
     void delete(long id) {
         School school = schoolRepository.findById(id).orElseThrow();
+        List<Student> studentsBySchoolName = studentRepository.findStudentsBySchoolName(school.getName());
+        studentRepository.deleteAll(studentsBySchoolName);
+       // for (Student s:studentsBySchoolName) {
+          //  studentRepository.delete(s);
+       // }
         schoolClassRepository.deleteAll(school.getSchoolClass());
         addressRepository.delete(school.getAddress());
         schoolRepository.delete(school);
