@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class School {
+public class School implements Comparable<School>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -68,5 +68,10 @@ public class School {
     @Override
     public int hashCode() {
         return Objects.hash(name, address);
+    }
+
+    @Override
+    public int compareTo(School o) {
+        return name.compareTo(o.name);
     }
 }

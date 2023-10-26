@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface StudentRepository extends CrudRepository<Student,Integer> {
     List<Student>findAllBySchoolClassClassName(String name);
+    List<Student>findAllBySchoolClassId(long id);
 
 
 
@@ -17,5 +18,6 @@ public interface StudentRepository extends CrudRepository<Student,Integer> {
             "JOIN sc.school sch " +
             "WHERE sch.name = :schoolName")
     List<Student> findStudentsBySchoolName(@Param("schoolName") String schoolName);
+
 
 }

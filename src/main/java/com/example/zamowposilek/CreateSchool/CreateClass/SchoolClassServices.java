@@ -1,9 +1,12 @@
 package com.example.zamowposilek.CreateSchool.CreateClass;
 
+import com.example.zamowposilek.CreateSchool.CreateClass.Student.Student;
+import com.example.zamowposilek.CreateSchool.CreateClass.Student.StudentRepository;
 import com.example.zamowposilek.SchoolException.ClassDuplicateException;
 import org.springframework.stereotype.Service;
 
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -13,10 +16,13 @@ public class SchoolClassServices {
 
     private final SchoolClassRepository schoolClassRepository;
     private final SchoolClassMapper schoolClassMapper;
+    private final StudentRepository studentRepository;
 
-    public SchoolClassServices(SchoolClassRepository schoolClassRepository, SchoolClassMapper schoolClassMapper) {
+    public SchoolClassServices(SchoolClassRepository schoolClassRepository, SchoolClassMapper schoolClassMapper,
+                               StudentRepository studentRepository) {
         this.schoolClassRepository = schoolClassRepository;
         this.schoolClassMapper = schoolClassMapper;
+        this.studentRepository = studentRepository;
     }
     SchoolClassDto save(SchoolClassDto dto){
         Optional<SchoolClass> byClassName = schoolClassRepository
@@ -40,6 +46,8 @@ public class SchoolClassServices {
               .collect(Collectors.toSet());
     }
     void deleteClass(int id){
+        List<Student> allBySchoolClassId = studentRepository.findAllBySchoolClassId(id);
+        studentRepository.deleteAll(allBySchoolClassId);
         schoolClassRepository.deleteById(id);
     }
 }

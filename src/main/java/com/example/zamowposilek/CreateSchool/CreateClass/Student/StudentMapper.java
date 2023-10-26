@@ -2,7 +2,6 @@ package com.example.zamowposilek.CreateSchool.CreateClass.Student;
 
 import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClass;
 import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClassRepository;
-
 import com.example.zamowposilek.SchoolException.ClassNotfoundException;
 import org.springframework.stereotype.Service;
 
@@ -23,11 +22,8 @@ public class StudentMapper {
         student.setId(dto.getId());
         student.setFirstName(dto.getFirstName());
         student.setLastName(dto.getLastName());
-
-      //  Optional<SchoolClass> byClassName =
         SchoolClass schoolClass = repository.findByClassNameAndSchoolName(dto.getClassName(), dto.getSchoolName())
                 .orElseThrow(ClassNotfoundException::new);
-       // byClassName.ifPresent(student::setSchoolClass);
         student.setSchoolClass(schoolClass);
         return student;
     }
