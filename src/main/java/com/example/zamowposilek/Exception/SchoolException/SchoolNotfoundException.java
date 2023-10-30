@@ -1,4 +1,4 @@
-package com.example.zamowposilek.SchoolException;
+package com.example.zamowposilek.Exception.SchoolException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,9 +1,9 @@
 package com.example.zamowposilek.Restaurant.RestaurantAddress;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.zamowposilek.Restaurant.Restaurant;
+import jakarta.persistence.*;
+
+import java.util.Objects;
 
 @Entity
 public class RestaurantAddress {
@@ -14,6 +14,8 @@ public class RestaurantAddress {
     private String zipCode;
     private String street;
     private String houseNumber;
+    @OneToOne
+    private Restaurant restaurant;
 
     public RestaurantAddress() {
     }
@@ -56,5 +58,26 @@ public class RestaurantAddress {
 
     public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RestaurantAddress that = (RestaurantAddress) o;
+        return Objects.equals(city, that.city) && Objects.equals(zipCode, that.zipCode) && Objects.equals(street, that.street) && Objects.equals(houseNumber, that.houseNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(city, zipCode, street, houseNumber);
     }
 }

@@ -6,8 +6,8 @@ import com.example.zamowposilek.CreateSchool.CreateClass.Student.StudentReposito
 import com.example.zamowposilek.CreateSchool.School.Address.AddressRepository;
 import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClassRepository;
 import com.example.zamowposilek.CreateSchool.School.Address.Address;
-import com.example.zamowposilek.SchoolException.SchoolDuplicateException;
-import com.example.zamowposilek.SchoolException.SchoolNotfoundException;
+import com.example.zamowposilek.Exception.SchoolException.SchoolDuplicateException;
+import com.example.zamowposilek.Exception.SchoolException.SchoolNotfoundException;
 import org.springframework.stereotype.Service;
 
 

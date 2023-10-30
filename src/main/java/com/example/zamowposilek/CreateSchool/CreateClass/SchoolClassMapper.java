@@ -5,7 +5,7 @@ import com.example.zamowposilek.CreateSchool.School.SchoolRepository;
 import com.example.zamowposilek.CreateSchool.School.School;
 
 
-import com.example.zamowposilek.SchoolException.SchoolNotfoundException;
+import com.example.zamowposilek.Exception.SchoolException.SchoolNotfoundException;
 import org.springframework.stereotype.Service;
 
 

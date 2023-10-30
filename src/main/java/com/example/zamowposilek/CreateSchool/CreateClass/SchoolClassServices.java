@@ -2,7 +2,7 @@ package com.example.zamowposilek.CreateSchool.CreateClass;
 
 import com.example.zamowposilek.CreateSchool.CreateClass.Student.Student;
 import com.example.zamowposilek.CreateSchool.CreateClass.Student.StudentRepository;
-import com.example.zamowposilek.SchoolException.ClassDuplicateException;
+import com.example.zamowposilek.Exception.SchoolException.ClassDuplicateException;
 import org.springframework.stereotype.Service;
 
 

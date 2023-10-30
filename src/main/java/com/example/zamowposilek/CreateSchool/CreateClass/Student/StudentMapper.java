@@ -2,7 +2,7 @@ package com.example.zamowposilek.CreateSchool.CreateClass.Student;
 
 import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClass;
 import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClassRepository;
-import com.example.zamowposilek.SchoolException.ClassNotfoundException;
+import com.example.zamowposilek.Exception.SchoolException.ClassNotfoundException;
 import org.springframework.stereotype.Service;
 
 @Service
