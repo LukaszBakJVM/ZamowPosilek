@@ -41,7 +41,6 @@ public class SchoolServices {
             throw new SchoolDuplicateException();
         }
         Address address = addressRepository.save(map.getAddress());
-        address.setSchool(map);
         School save = schoolRepository.save(map);
 
 
@@ -57,9 +56,7 @@ public class SchoolServices {
         School school = schoolRepository.findById(id).orElseThrow();
         List<Student> studentsBySchoolName = studentRepository.findStudentsBySchoolName(school.getName());
         studentRepository.deleteAll(studentsBySchoolName);
-       // for (Student s:studentsBySchoolName) {
-          //  studentRepository.delete(s);
-       // }
+
         schoolClassRepository.deleteAll(school.getSchoolClass());
         addressRepository.delete(school.getAddress());
         schoolRepository.delete(school);

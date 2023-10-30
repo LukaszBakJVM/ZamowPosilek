@@ -16,14 +16,15 @@ public class School implements Comparable<School>{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    @OneToOne(mappedBy = "school")
-
-   private Address address;
+    @OneToOne
+    private Address address;
     @OneToMany(mappedBy = "school")
 
     private List<SchoolClass> schoolClass;
 
-    @ManyToOne()
+    @ManyToOne
+
+
     private Restaurant restaurant;
 
     public School() {

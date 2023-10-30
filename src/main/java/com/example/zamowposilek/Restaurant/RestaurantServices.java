@@ -2,6 +2,7 @@ package com.example.zamowposilek.Restaurant;
 
 
 import com.example.zamowposilek.Exception.Restaurant.RestaurantDuplicateException;
+import com.example.zamowposilek.Exception.Restaurant.RestaurantNotFoundException;
 import com.example.zamowposilek.Restaurant.RestaurantAddress.RestaurantAddress;
 import com.example.zamowposilek.Restaurant.RestaurantAddress.RestaurantAddressRepository;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,11 @@ public class RestaurantServices {
          restaurantAddress.setRestaurant(map);
          Restaurant save = restaurantRepository.save(map);
          return restaurantMapper.map(save);
+     }
+     ResAddDto findByIb(long id){
+         Restaurant restaurant = restaurantRepository.findById(id).orElseThrow(RestaurantNotFoundException::new);
+         return restaurantMapper.map(restaurant);
+
+
      }
 }

@@ -1,7 +1,7 @@
 package com.example.zamowposilek.CreateSchool.School.Address;
 
 
-import com.example.zamowposilek.CreateSchool.School.School;
+
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -15,9 +15,7 @@ public class Address {
     private String zipCode;
     private String street;
     private String houseNumber;
-    @OneToOne
 
-    private School school;
 
     public long getId() {
         return id;
@@ -59,13 +57,7 @@ public class Address {
         this.houseNumber = houseNumber;
     }
 
-    public School getSchool() {
-        return school;
-    }
 
-    public void setSchool(School school) {
-        this.school = school;
-    }
 
     @Override
     public boolean equals(Object o) {
