@@ -76,7 +76,10 @@ public class School implements Comparable<School>{
         return Objects.equals(name, school.name) && Objects.equals(address, school.address);
     }
 
-
+    @Override
+    public String toString() {
+        return name ;
+    }
 
     @Override
     public int hashCode() {

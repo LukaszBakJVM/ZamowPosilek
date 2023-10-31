@@ -41,9 +41,7 @@ public class RestaurantMapper {
         dto.setZipCode(restaurant.getRestaurantAddress().getZipCode());
         dto.setStreet(restaurant.getRestaurantAddress().getStreet());
         dto.setHouseNumber(restaurant.getRestaurantAddress().getHouseNumber());
-      //  School school = schoolRepository.findByRestaurant_RestaurantName(restaurant.getRestaurantName())
-             //   .orElseThrow();
-       // dto.setSchoolName(school.getName());
+        dto.setSchoolName(restaurant.getSchools().toString());
         return dto;
 
     }
