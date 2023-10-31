@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SchoolMapper {
- protected School map(SchoolDto dto){
+
+
+    protected School map(SchoolDto dto){
     School school =new School();
     Address address =new Address();
     school.setId(dto.getSchoolId());

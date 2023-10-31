@@ -7,7 +7,6 @@ import com.example.zamowposilek.Restaurant.RestaurantAddress.RestaurantAddress;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
 public class RestaurantMapper {
     private final SchoolRepository schoolRepository;
@@ -42,7 +41,9 @@ public class RestaurantMapper {
         dto.setZipCode(restaurant.getRestaurantAddress().getZipCode());
         dto.setStreet(restaurant.getRestaurantAddress().getStreet());
         dto.setHouseNumber(restaurant.getRestaurantAddress().getHouseNumber());
-        dto.setSchoolName(restaurant.getSchools().stream().map(School::getName).toString());
+      //  School school = schoolRepository.findByRestaurant_RestaurantName(restaurant.getRestaurantName())
+             //   .orElseThrow();
+       // dto.setSchoolName(school.getName());
         return dto;
 
     }

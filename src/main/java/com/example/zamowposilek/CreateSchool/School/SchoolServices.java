@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -35,15 +36,15 @@ public class SchoolServices {
     }
 
     SchoolDto save(SchoolDto dto) {
-        School map = schoolMapper.map(dto);
-        Set<School> all = schoolRepository.findAll();
-        if (all.contains(map)) {
+        Optional<School> byName = schoolRepository.findByName(dto.getSchoolName());
+        byName.ifPresent(p-> {
             throw new SchoolDuplicateException();
-        }
+        } );
+
+        School map = schoolMapper.map(dto);
         Address address = addressRepository.save(map.getAddress());
+        address.setSchool(map);
         School save = schoolRepository.save(map);
-
-
         return schoolMapper.map(save);
     }
 

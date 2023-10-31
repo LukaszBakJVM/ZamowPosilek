@@ -4,11 +4,10 @@ import com.example.zamowposilek.CreateSchool.School.School;
 import com.example.zamowposilek.Restaurant.RestaurantAddress.RestaurantAddress;
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-import java.util.Collection;
+
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import java.util.TreeSet;
 
 @Entity
 public class Restaurant {
@@ -19,12 +18,17 @@ public class Restaurant {
     private String restaurantName;
     private String account;
 
-   private BigDecimal accountBalanceParent;
     @OneToOne
     private RestaurantAddress restaurantAddress;
-    @OneToMany(mappedBy = "restaurant")
+    @OneToMany  (mappedBy = "restaurant")
 
-    private Set<School>schools=new TreeSet<>();
+    private Set<School> schools = new HashSet<>();
+
+
+
+
+
+
 
     public long getId() {
         return id;
@@ -50,13 +54,6 @@ public class Restaurant {
         this.account = account;
     }
 
-    public BigDecimal getAccountBalanceParent() {
-        return accountBalanceParent;
-    }
-
-    public void setAccountBalanceParent(BigDecimal accountBalanceParent) {
-        this.accountBalanceParent = accountBalanceParent;
-    }
 
     public RestaurantAddress getRestaurantAddress() {
         return restaurantAddress;
@@ -87,16 +84,6 @@ public class Restaurant {
         return Objects.hash(restaurantName, restaurantAddress);
     }
 
-    @OneToMany(mappedBy = "restaurant")
-    private Collection<School> school;
-
-    public Collection<School> getSchool() {
-        return school;
-    }
-
-    public void setSchool(Collection<School> school) {
-        this.school = school;
-    }
 }
 
 

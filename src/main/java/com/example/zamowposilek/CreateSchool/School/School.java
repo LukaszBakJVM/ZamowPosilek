@@ -15,7 +15,7 @@ public class School implements Comparable<School>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
+    public String name;
     @OneToOne
     private Address address;
     @OneToMany(mappedBy = "school")
@@ -23,8 +23,6 @@ public class School implements Comparable<School>{
     private List<SchoolClass> schoolClass;
 
     @ManyToOne
-
-
     private Restaurant restaurant;
 
     public School() {
@@ -62,6 +60,14 @@ public class School implements Comparable<School>{
         this.schoolClass = schoolClass;
     }
 
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,6 +75,8 @@ public class School implements Comparable<School>{
         School school = (School) o;
         return Objects.equals(name, school.name) && Objects.equals(address, school.address);
     }
+
+
 
     @Override
     public int hashCode() {
