@@ -11,7 +11,7 @@ public class ResAddDto {
     private String zipCode;
     private String street;
     private String houseNumber;
-    private String schoolName;
+
 
     public long getRestaurantId() {
         return restaurantId;
@@ -77,11 +77,5 @@ public class ResAddDto {
         this.houseNumber = houseNumber;
     }
 
-    public String getSchoolName() {
-        return schoolName;
-    }
 
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
-    }
 }

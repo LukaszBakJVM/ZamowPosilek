@@ -2,9 +2,8 @@ package com.example.zamowposilek.CreateSchool.School;
 
 import com.example.zamowposilek.CreateSchool.School.Address.Address;
 import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClass;
-import com.example.zamowposilek.Restaurant.Restaurant;
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 
 
 import java.util.List;
@@ -19,11 +18,8 @@ public class School implements Comparable<School>{
     @OneToOne
     private Address address;
     @OneToMany(mappedBy = "school")
-
     private List<SchoolClass> schoolClass;
 
-    @ManyToOne
-    private Restaurant restaurant;
 
     public School() {
     }
@@ -58,14 +54,6 @@ public class School implements Comparable<School>{
 
     public void setSchoolClass(List<SchoolClass> schoolClass) {
         this.schoolClass = schoolClass;
-    }
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
     }
 
     @Override

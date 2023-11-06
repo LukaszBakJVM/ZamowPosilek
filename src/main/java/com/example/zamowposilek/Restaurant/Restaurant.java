@@ -1,16 +1,14 @@
 package com.example.zamowposilek.Restaurant;
 
-import com.example.zamowposilek.CreateSchool.School.School;
+
 import com.example.zamowposilek.Restaurant.RestaurantAddress.RestaurantAddress;
 import jakarta.persistence.*;
 
-
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
+
 
 @Entity
-public class Restaurant {
+public class Restaurant implements Comparable<Restaurant> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -20,15 +18,6 @@ public class Restaurant {
 
     @OneToOne
     private RestaurantAddress restaurantAddress;
-    @OneToMany  (mappedBy = "restaurant")
-
-    private Set<School> schools = new HashSet<>();
-
-
-
-
-
-
 
     public long getId() {
         return id;
@@ -63,13 +52,6 @@ public class Restaurant {
         this.restaurantAddress = restaurantAddress;
     }
 
-    public Set<School> getSchools() {
-        return schools;
-    }
-
-    public void setSchools(Set<School> schools) {
-        this.schools = schools;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -84,6 +66,10 @@ public class Restaurant {
         return Objects.hash(restaurantName, restaurantAddress);
     }
 
+    @Override
+    public int compareTo(Restaurant o) {
+        return restaurantName.compareTo(o.restaurantName);
+    }
 }
 
 

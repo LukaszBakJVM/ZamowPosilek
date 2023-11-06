@@ -3,7 +3,7 @@ package com.example.zamowposilek.CreateSchool.School;
 public class SchoolDto {
     private long schoolId;
     private String schoolName;
-    private long addressId;
+
     private String city;
     private String zipCode;
     private String street;
@@ -23,14 +23,6 @@ public class SchoolDto {
 
     public void setSchoolName(String schoolName) {
         this.schoolName = schoolName;
-    }
-
-    public long getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(long addressId) {
-        this.addressId = addressId;
     }
 
     public String getCity() {

@@ -13,7 +13,7 @@ public class SchoolMapper {
     Address address =new Address();
     school.setId(dto.getSchoolId());
     school.setName(dto.getSchoolName());
-    address.setId(dto.getAddressId());
+  //  address.setId(dto.getAddressId());
     address.setCity(dto.getCity());
     address.setZipCode(dto.getZipCode());
     address.setStreet(dto.getStreet());
@@ -26,7 +26,7 @@ protected SchoolDto map(School school){
     SchoolDto dto =new SchoolDto();
     dto.setSchoolId(school.getId());
     dto.setSchoolName(school.getName());
-    dto.setAddressId(school.getAddress().getId());
+  //  dto.setAddressId(school.getAddress().getId());
     dto.setCity(school.getAddress().getCity());
     dto.setZipCode(school.getAddress().getZipCode());
     dto.setStreet(school.getAddress().getStreet());
