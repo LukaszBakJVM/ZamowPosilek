@@ -8,12 +8,11 @@ import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClassRepository;
 import com.example.zamowposilek.CreateSchool.School.Address.Address;
 import com.example.zamowposilek.Exception.SchoolException.SchoolDuplicateException;
 import com.example.zamowposilek.Exception.SchoolException.SchoolNotfoundException;
+
 import org.springframework.stereotype.Service;
 
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -68,10 +67,9 @@ public class SchoolServices {
                 .map(schoolMapper::map)
                 .collect(Collectors.toSet());
     }
-
     List<String> findAllSchool() {
       return   schoolRepository.findAll()
-                .stream()
+                 .stream()
                 .map(School::getName)
                 .toList();
 

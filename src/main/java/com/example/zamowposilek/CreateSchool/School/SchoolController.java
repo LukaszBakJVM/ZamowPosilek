@@ -8,6 +8,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Set;
 
+
 @RestController
 @RequestMapping("/school")
 public class SchoolController {
@@ -32,10 +33,7 @@ public class SchoolController {
         schoolServices.delete(id);
         return  ResponseEntity.noContent().build();
     }
-    @GetMapping("/names")
-    List<String>schoolName(){
-        return schoolServices.findAllSchool();
-    }
+
     @GetMapping
     ResponseEntity<Set<SchoolDto>>findAll(){
         return ResponseEntity.ok(schoolServices.findAll());

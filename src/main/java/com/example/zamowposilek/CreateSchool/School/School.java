@@ -6,11 +6,12 @@ import com.example.zamowposilek.CreateSchool.CreateClass.SchoolClass;
 import jakarta.persistence.*;
 
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class School implements Comparable<School>{
+public class School implements Comparator<School> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -57,6 +58,11 @@ public class School implements Comparable<School>{
     }
 
     @Override
+    public int compare(School o1, School o2) {
+        return o1.name.compareTo(o2.name);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -66,7 +72,7 @@ public class School implements Comparable<School>{
 
     @Override
     public String toString() {
-        return name ;
+        return name;
     }
 
     @Override
@@ -74,8 +80,6 @@ public class School implements Comparable<School>{
         return Objects.hash(name, address);
     }
 
-    @Override
-    public int compareTo(School o) {
-        return name.compareTo(o.name);
-    }
 }
+
+

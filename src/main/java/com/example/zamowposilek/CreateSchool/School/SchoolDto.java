@@ -1,6 +1,8 @@
 package com.example.zamowposilek.CreateSchool.School;
 
-public class SchoolDto {
+import java.util.Comparator;
+
+public class SchoolDto implements Comparator<SchoolDto> {
     private long schoolId;
     private String schoolName;
 
@@ -55,5 +57,10 @@ public class SchoolDto {
 
     public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
+    }
+
+    @Override
+    public int compare(SchoolDto o1, SchoolDto o2) {
+        return o1.schoolName.compareTo(o2.schoolName);
     }
 }
