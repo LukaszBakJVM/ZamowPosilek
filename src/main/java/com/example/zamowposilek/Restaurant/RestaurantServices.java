@@ -35,7 +35,13 @@ public class RestaurantServices {
      ResAddDto findByIb(long id){
          Restaurant restaurant = restaurantRepository.findById(id).orElseThrow(RestaurantNotFoundException::new);
          return restaurantMapper.map(restaurant);
-
-
-     }
+    }
+    void updateRestaurant(ResAddDto dto){
+        Restaurant update = restaurantMapper.map(dto);
+        restaurantRepository.save(update);
+    }
+    ResAddDto findByName(String name){
+        Restaurant restaurant = restaurantRepository.findByRestaurantName(name).orElseThrow();
+        return restaurantMapper.map(restaurant);
+    }
 }
